@@ -4,7 +4,7 @@
   {:target :browser  ;; target browser, not node
    :output-dir "out"
    ;; :output-to "out/eval.js"  ;; single file
-   :modules {:eval {:init-fn my.cherry/init}} ;; your main namespace
+   :modules {:cherry.eval {:init-fn my.cherry/init}}
    :asset-path "."}}}  ;; optional, needed if using goog modules
 
 

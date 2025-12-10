@@ -27,14 +27,20 @@ context.exceptionHandler = { context, exception in
     print("JS Error: \(exception!)")
 }
 
-let fileURL = URL(fileURLWithPath: "out/eval.js")
+let fileURL = URL(fileURLWithPath: "out/cherry.eval.js")
 
 guard let jsCode = try? String(contentsOf: fileURL, encoding: .utf8) else {
     print("Failed to read JS file")
     exit(1)
 }
 
-// Your JS code
 let result = context.evaluateScript(jsCode)
 
-print("Result:", result!)
+let evalString = context.evaluateScript("cherry.evalString")
+let ret = evalString?.call(withArguments: ["(+ 1 2 3)"])
+print("Result:", ret)
+
+
+evalString?.call(withArguments: ["(ns foo) (def atm (atom 1)) (swap! atm inc)"])
+// let ret2 = evalString?.call(withArguments: ["(ns foo) atm"])
+// print("Result:", ret2)

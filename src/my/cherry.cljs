@@ -4,7 +4,7 @@
 (cherry/preserve-ns 'cljs.core)
 (cherry/preserve-ns 'clojure.string)
 
-(defn init []
-  (prn (cherry/eval-string "(+ 1 2 3)")))
+(def exports #js {:evalString cherry/eval-string})
 
-(prn :dude)
+(defn init []
+  (set! js/globalThis.cherry exports))
