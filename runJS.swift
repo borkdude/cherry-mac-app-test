@@ -54,6 +54,8 @@ if let size = context.objectForKeyedSubscript("size"), !size.isUndefined {
 
 
 let _ = evalString?.call(withArguments: ["(defn two-times [x] (* 2 x))"])
+let _ = evalString?.call(withArguments: ["(prn (two-times 33))"])
+
 
 if let result = context.evaluateScript("two_times(1)"), !result.isUndefined {
     print(result)
