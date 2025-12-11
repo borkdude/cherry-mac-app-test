@@ -44,3 +44,17 @@ print("Result:", ret)
 evalString?.call(withArguments: ["(defn foo [] (+ 1 2 3))"])
 let ret2 = evalString?.call(withArguments: ["(foo)"])
 print("Result:", ret2)
+
+
+let _ = evalString?.call(withArguments: ["(def size 64)"])
+
+if let size = context.objectForKeyedSubscript("size"), !size.isUndefined {
+    print(Int(size.toInt32()))
+}
+
+
+let _ = evalString?.call(withArguments: ["(defn two-times [x] (* 2 x))"])
+
+if let result = context.evaluateScript("two_times(1)"), !result.isUndefined {
+    print(result)
+}
