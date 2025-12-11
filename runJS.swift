@@ -41,6 +41,6 @@ let ret = evalString?.call(withArguments: ["(+ 1 2 3)"])
 print("Result:", ret)
 
 
-evalString?.call(withArguments: ["(ns foo) (def atm (atom 1)) (swap! atm inc)"])
-// let ret2 = evalString?.call(withArguments: ["(ns foo) atm"])
-// print("Result:", ret2)
+evalString?.call(withArguments: ["(defn foo [] (+ 1 2 3))"])
+let ret2 = evalString?.call(withArguments: ["(foo)"])
+print("Result:", ret2)
